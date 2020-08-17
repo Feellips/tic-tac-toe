@@ -13,6 +13,12 @@ public class Field {
         Field.table = new char[x][y];
     }
 
+    public void testFilling() {
+        for (int i = 0; i < x; i++)
+            for (int j = 0; j < y; j++)
+                table[i][j] = 'X';
+
+    }
 
     public static int getY() {
         return y;
