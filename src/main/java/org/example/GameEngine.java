@@ -1,23 +1,44 @@
 package org.example;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.concurrent.LinkedBlockingQueue;
 
-/**
- * Hello world!
- */
 public class GameEngine {
+
+    private static int currentTurn = 0;
+    private static Field gameField;
+    private static Queue<Player> players;
+
     public static void main(String[] args) {
-        Field field = new Field(3, 3);
-        field.testFilling();
-        drawField(field);
+        preparingStage();
+        startGame();
     }
 
-    public static void drawField(Field field) {
-        char[][] table = field.getTable();
+    private static void startGame() {
+        Scanner input = new Scanner(System.in);
+        while (currentTurn < gameField.getMaxTurns()) {
 
-        for (int i = 0; i < field.getX(); i++) {
-            for (int j = 0; j < field.getY(); j++) {
-                System.out.print(table[i][j]);
+        }
+    }
+
+    private static void preparingStage() {
+        gameField = new Field(5, 5);
+        gameField.testFilling();
+        drawField();
+
+        players = new LinkedBlockingQueue<>();
+        players.add(new Player('X'));
+        players.add(new Player('O'));
+    }
+
+    public static void drawField() {
+
+
+        for (int i = 0; i < gameField.getX(); i++) {
+            for (int j = 0; j < gameField.getY(); j++) {
+                System.out.print(gameField.getTable()[i][j] + " ");
             }
-            System.out.println();
+            System.out.println(" ");
         }
     }
 }
